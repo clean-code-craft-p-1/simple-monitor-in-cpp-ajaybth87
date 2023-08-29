@@ -49,7 +49,7 @@ int POxygenSaturationlsOk(float& spo2)
 	
 bool vitalsOk(float temperature, float pulseRate, float spo2) {
  bool result=(TemperaturelsOk(temperature) && PulseRatelsOk(pulseRate) && POxygenSaturationlsOk(spo2));
-  return result
+  return result;
 }
 
 
