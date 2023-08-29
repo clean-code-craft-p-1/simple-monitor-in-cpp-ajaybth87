@@ -49,7 +49,7 @@ int POxygenSaturationlsOk(float& spo2)
 	
 int vitalsOk(float temperature, float pulseRate, float spo2) {
  
-  if(IsTemperatureNormal(temperature) && IsPulseRateNormal(pulseRate) && IsPOxygenSaturationNormal(spo2))
+  if(TemperaturelsOk(temperature) && PulseRatelsOk(pulseRate) && POxygenSaturationlsOk(spo2))
   {
    return 1;
   }
