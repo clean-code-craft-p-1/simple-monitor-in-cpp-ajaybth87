@@ -14,7 +14,7 @@ void flash()
     }
 }
 
-int IsTemperatureNormal(float& temperature)
+int TemperaturelsOk(float& temperature)
 {
 	if(temperature > 102 || temperature < 95) 
 	{
@@ -25,7 +25,7 @@ int IsTemperatureNormal(float& temperature)
  return 1;
 }
 
-int IsPulseRateNormal(float& pulseRate)
+int PulseRatelsOk(float& pulseRate)
 {
 	if(pulseRate < 60 || pulseRate > 100) 
 	{
@@ -36,7 +36,7 @@ int IsPulseRateNormal(float& pulseRate)
  return 1;
 }
 
-int IsPOxygenSaturationNormal(float& spo2)
+int POxygenSaturationlsOk(float& spo2)
 {
 	if(spo2 < 90) 
 	{
@@ -53,8 +53,10 @@ int vitalsOk(float temperature, float pulseRate, float spo2) {
   {
    return 1;
   }
-
-  return 0;
+  else
+  {
+	  return 0;
+  }
 }
 
 
