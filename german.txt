@@ -1,0 +1,5 @@
+STRING_TEMPERATURE_CRITICAL=Temperaturkritisch
+STRING_ALERT_PULSE=Die Pulsfrequenz liegt außerhalb des zulässigen Bereichs
+STRING_ALERT_SO2=Sauerstoffsättigung außerhalb des zulässigen Bereichs
+STRING_TEMP_WARNING=Warnung: Unterkühlung droht
+STRING_HIGHTEMP_WARNING=Warnung: Hyperthermie naht

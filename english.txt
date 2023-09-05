@@ -1,0 +1,5 @@
+STRING_TEMPERATURE_CRITICAL=Temperature critical
+STRING_ALERT_PULSE=Pulse Rate is out of range
+STRING_ALERT_SO2=Oxygen Saturation out of range
+STRING_TEMP_WARNING=Warning: Approaching hypothermia
+STRING_HIGHTEMP_WARNING=Warning: Approaching hyperthermia
