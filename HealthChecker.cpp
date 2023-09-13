@@ -1,8 +1,8 @@
 #include <thread>
 #include <unistd.h>
-#include "HealthChecker.h"
-                                                 
-void simulateBlinkingEffect()
+#include "HealthChecker.h"   
+#include "TempChecker.h"
+void HealthChecker::simulateBlinkingEffect()
 {
     for (int i = 0; i < 6; i++)
     {
@@ -13,45 +13,35 @@ void simulateBlinkingEffect()
     }
 }
 
-bool isOutOfRange(float value, float lower, float upper) {
+bool HealthChecker::isOutOfRange(float value, float lower, float upper) {
     return value < lower || value > upper;
 }
 
-int TemperaturelsOk(float& temperature)
-{
-    if (isOutOfRange(temperature,95, 102))
-    {
-        cout << localizedString("STRING_TEMPERATURE_CRITICAL") << "!\n";
-        simulateBlinkingEffect();
-        return 0;
-    }
-    return 1;
-}
 
-int PulseRatelsOk(float& pulseRate)
+bool HealthChecker::lsPulseRateInRange(float pulseRate)
 {
     if (isOutOfRange(pulseRate, 60, 100))
     {
         cout << localizedString("STRING_ALERT_PULSE") << "!\n";
         simulateBlinkingEffect();
-        return 0;
+        return false;
     }
-    return 1;
+    return true;
 }
 
-int POxygenSaturationlsOk(float& spo2)
+bool HealthChecker::lsPOxygenSaturationInRange(float spo2)
 {
     if (isOutOfRange(spo2, 90))
     {
         cout << localizedString("STRING_ALERT_SO2") << "!\n";
         simulateBlinkingEffect();
-        return 0;
+        return false;
     }
-    return 1;
+    return true;
 }
 
-
-bool vitalsOk(float temperature, float pulseRate, float spo2) {
-    bool result = (TemperaturelsOk(temperature) && PulseRatelsOk(pulseRate) && POxygenSaturationlsOk(spo2));
+bool HealthChecker::vitalsOk(float temperature, float pulseRate, float spo2, char TempUnit) {
+    /* Specify temperature unit as 'C' for Celcius or 'F' for Farenhite. Default is Farenhite */
+    bool result = (TempChecker::lsTemperatureInRange(temperature, TempUnit) && HealthChecker::lsPulseRateInRange(pulseRate) && HealthChecker::lsPOxygenSaturationInRange(spo2));
     return result;
 }
