@@ -28,17 +28,28 @@ float TempChecker::GetTemperarureInFarenhite(float temperature, char unit)
 }
 
 string TempChecker::GetTemperatureNotification(float temperature) {
-    string condition = "";
-    if (temperature <= 95) {
-        condition = "HYPO_THERMIA";
-    } else if (temperature <= 96.53) {
-        condition = "NEAR_HYPO";
-    } else if (temperature <= 100.47) {
-        condition = "NORMAL";
-    } else if (temperature <= 102) {
-        condition = "NEAR_HYPER";
-    } else if (temperature <= 200) {
-        condition = "HYPER_THERMIA";
+    map<string, pair<float, float>> conditions = {
+        {"HYPO_THERMIA", {0, 95}},
+        {"NEAR_HYPO", {95, 96.53}},
+        {"NORMAL", {96.54, 100.47}},
+        {"NEAR_HYPER", {100.48, 102}},
+        {"HYPER_THERMIA", {102, 200}}
+    };
+    string conditionString;
+    for (auto it = conditions.begin(); it != conditions.end(); ++it) 
+    {
+        auto& condition = it->first;
+        auto& bounds = it->second;
+
+        conditionString = findCondition(bounds.first, bounds.second, temperature) ? condition : "";
+
     }
-    return condition;
+    return conditionString;
+}
+
+bool TempChecker::findCondition(float first, float second, float temp)
+{
+    if (first <= temp && temp <= second)
+        return true;
+
 }
