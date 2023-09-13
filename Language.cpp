@@ -1,4 +1,4 @@
-#include "Language.h";
+#include "Language.h"
 
 std::map<std::string, std::string> langfile;
 

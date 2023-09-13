@@ -33,7 +33,7 @@ string TempChecker::GetTemperatureNotification(float temperature) {
         {"NEAR_HYPO", {95, 96.53}},
         {"NORMAL", {96.54, 100.47}},
         {"NEAR_HYPER", {100.48, 102}},
-        {"HYPER_THERMIA", {102, numeric_limits<float>::infinity()}}
+        {"HYPER_THERMIA", {102, 200}}
     };
     for (auto it = conditions.begin(); it != conditions.end(); ++it) {
         auto& condition = it->first;
